@@ -1,4 +1,4 @@
-package com.stefattorusso.simpleconverter.data.entity
+package com.stefattorusso.data.entity
 
 data class RatesContainerEntity(
     var base: String? = null,

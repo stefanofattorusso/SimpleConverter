@@ -1,9 +1,9 @@
 package com.stefattorusso.simpleconverter.data
 
+import com.stefattorusso.data.entity.RatesContainerEntity
+import com.stefattorusso.data.network.retrofit.AppRetrofitService
+import com.stefattorusso.data.repository.RatesRepository
 import com.stefattorusso.domain.repository.RatesRepositoryContract
-import com.stefattorusso.simpleconverter.data.entity.RatesContainerEntity
-import com.stefattorusso.simpleconverter.data.repository.RatesRepository
-import com.stefattorusso.simpleconverter.network.retrofit.AppRetrofitService
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test

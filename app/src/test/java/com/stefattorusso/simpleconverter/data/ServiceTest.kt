@@ -3,8 +3,8 @@ package com.stefattorusso.simpleconverter.data
 import android.content.Context
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.gson.GsonBuilder
-import com.stefattorusso.simpleconverter.data.entity.RatesContainerEntity
-import com.stefattorusso.simpleconverter.network.retrofit.AppRetrofitService
+import com.stefattorusso.data.entity.RatesContainerEntity
+import com.stefattorusso.data.network.retrofit.AppRetrofitService
 import com.stefattorusso.simpleconverter.utils.getStringFromAssets
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer

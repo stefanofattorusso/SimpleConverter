@@ -1,9 +1,9 @@
 package com.stefattorusso.simpleconverter.di.module
 
 import android.content.Context
+import com.stefattorusso.data.network.retrofit.AppRetrofitService
 import com.stefattorusso.simpleconverter.BuildConfig
 import com.stefattorusso.simpleconverter.R
-import com.stefattorusso.simpleconverter.network.retrofit.AppRetrofitService
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable

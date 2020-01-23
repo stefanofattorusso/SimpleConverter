@@ -1,7 +1,7 @@
 package com.stefattorusso.simpleconverter.di.module
 
+import com.stefattorusso.data.repository.RatesRepository
 import com.stefattorusso.domain.repository.RatesRepositoryContract
-import com.stefattorusso.simpleconverter.data.repository.RatesRepository
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton

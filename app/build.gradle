@@ -8,19 +8,21 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-allopen'
 
+def ext = rootProject.ext
+
 allOpen {
     // allows mocking for classes w/o directly opening them for release builds
     annotation ("com.stefattorusso.simpleconverter.utils.MyOpenClass")
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.stefattorusso.simpleconverter"
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        applicationId ext.applicationId
+        versionCode ext.versionCode
+        versionName ext.versionName
+        targetSdkVersion ext.targetSdkVersion
+        minSdkVersion project.minSdkVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -63,6 +65,7 @@ android {
 dependencies {
 
     implementation project(":domain")
+    implementation project(":data")
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -72,11 +75,11 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 
-    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+//    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+//    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+//    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+//    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+//    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
     implementation "com.github.bumptech.glide:glide:$glideVersion"
 

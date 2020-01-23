@@ -2,9 +2,9 @@ package com.stefattorusso.simpleconverter.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.stefattorusso.data.entity.RatesContainerEntity
 import com.stefattorusso.domain.usecase.GetLatestUseCaseContract
 import com.stefattorusso.simpleconverter.RxSchedulerRule
-import com.stefattorusso.simpleconverter.data.entity.RatesContainerEntity
 import com.stefattorusso.simpleconverter.model.ErrorModel
 import com.stefattorusso.simpleconverter.model.RateModel
 import com.stefattorusso.simpleconverter.ui.main.mvvm.MainViewModel

@@ -1,8 +1,8 @@
-package com.stefattorusso.simpleconverter.data.repository
+package com.stefattorusso.data.repository
 
+import com.stefattorusso.data.network.retrofit.AppRetrofitService
 import com.stefattorusso.domain.RateDomain
 import com.stefattorusso.domain.repository.RatesRepositoryContract
-import com.stefattorusso.simpleconverter.network.retrofit.AppRetrofitService
 import io.reactivex.Single
 import java.math.BigDecimal
 import javax.inject.Inject
