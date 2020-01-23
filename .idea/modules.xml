@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SimpleConverter.iml" filepath="$PROJECT_DIR$/SimpleConverter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/StudioProjects-SimpleConverter.iml" filepath="$PROJECT_DIR$/StudioProjects-SimpleConverter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SimpleConverter.iml" filepath="$PROJECT_DIR$/.idea/SimpleConverter.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/buildConfig.iml" filepath="$PROJECT_DIR$/app/build/generated/source/buildConfig/buildConfig.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/src/main/main.iml" filepath="$PROJECT_DIR$/app/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/stefano-StudioProjects-SimpleConverter.iml" filepath="$PROJECT_DIR$/stefano-StudioProjects-SimpleConverter.iml" />
     </modules>
   </component>
 </project>
