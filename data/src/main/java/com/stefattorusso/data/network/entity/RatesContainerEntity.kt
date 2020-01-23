@@ -1,4 +1,4 @@
-package com.stefattorusso.data.entity
+package com.stefattorusso.data.network.entity
 
 data class RatesContainerEntity(
     var base: String? = null,

@@ -4,5 +4,6 @@ data class RateModel(
     val code: String,
     val name: String,
     val value: String,
-    val base: Boolean
+    val base: Boolean,
+    val flag: Int
 )

@@ -50,25 +50,29 @@ class MainViewTest {
             code = "EUR",
             name = "EUR name",
             value = "1",
-            base = true
+            base = true,
+            flag = 0
         ),
         RateModel(
             code = "AUD",
             name = "AUD name",
             value = "1.61",
-            base = false
+            base = false,
+            flag = 0
         ),
         RateModel(
             code = "BGN",
             name = "BGN name",
             value = "1.98",
-            base = false
+            base = false,
+            flag = 0
         ),
         RateModel(
             code = "BRL",
             name = "BRL name",
             value = "4.77",
-            base = false
+            base = false,
+            flag = 0
         )
     )
 

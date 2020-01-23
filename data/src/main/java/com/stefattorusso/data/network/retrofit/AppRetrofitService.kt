@@ -1,6 +1,6 @@
 package com.stefattorusso.data.network.retrofit
 
-import com.stefattorusso.data.entity.RatesContainerEntity
+import com.stefattorusso.data.network.entity.RatesContainerEntity
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

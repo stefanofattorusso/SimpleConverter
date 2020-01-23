@@ -62,9 +62,11 @@ open class MainFragment : BaseFragment<MainViewModel>() {
             mutableList.addAll(it)
             mAdapter.updateData(mutableList)
         })
+
         viewModel.rateSelected.observe(viewLifecycleOwner, Observer {
             (recycler_view.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(0, 0)
         })
+
         viewModel.error.observe(viewLifecycleOwner, Observer {
             showError(it)
         })

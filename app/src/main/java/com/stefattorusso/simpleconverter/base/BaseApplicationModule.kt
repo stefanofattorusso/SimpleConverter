@@ -3,10 +3,7 @@ package com.stefattorusso.simpleconverter.base
 
 import android.app.Application
 import android.content.Context
-import com.stefattorusso.simpleconverter.di.module.ActivityBuilderModule
-import com.stefattorusso.simpleconverter.di.module.NetworkModule
-import com.stefattorusso.simpleconverter.di.module.RepositoryModule
-import com.stefattorusso.simpleconverter.di.module.UseCaseModule
+import com.stefattorusso.simpleconverter.di.module.*
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton
@@ -16,7 +13,8 @@ import javax.inject.Singleton
         ActivityBuilderModule::class,
         NetworkModule::class,
         RepositoryModule::class,
-        UseCaseModule::class
+        UseCaseModule::class,
+        DatabaseModule::class
     )
 )
 abstract class BaseApplicationModule {

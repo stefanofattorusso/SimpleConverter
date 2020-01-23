@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.stefattorusso.domain.RateDomain
 import com.stefattorusso.domain.usecase.GetLatestUseCaseContract
 import com.stefattorusso.simpleconverter.base.BaseViewModel
 import com.stefattorusso.simpleconverter.model.ErrorModel
@@ -28,13 +29,13 @@ class MainViewModel @Inject constructor(
     private var mDisposable: Disposable? = null
 
     private var mSelectedRate =
-        com.stefattorusso.domain.RateDomain("EUR", BigDecimal.ONE, true)
+        RateDomain("EUR", BigDecimal.ONE, true)
 
     private val mSelectedValue = MutableLiveData<BigDecimal>()
     val selectedValue: LiveData<BigDecimal> = mSelectedValue
 
-    private val mRateList = MutableLiveData<List<com.stefattorusso.domain.RateDomain>>()
-    private var mUpdatedRateList = MediatorLiveData<List<com.stefattorusso.domain.RateDomain>>().apply {
+    private val mRateList = MutableLiveData<List<RateDomain>>()
+    private var mUpdatedRateList = MediatorLiveData<List<RateDomain>>().apply {
         value = mutableListOf()
 
         addSource(mRateList) {
@@ -63,12 +64,12 @@ class MainViewModel @Inject constructor(
         mDisposable = getLatestUseCase.getLatest(base)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(object : ResourceSubscriber<List<com.stefattorusso.domain.RateDomain>>() {
+            .subscribeWith(object : ResourceSubscriber<List<RateDomain>>() {
                 override fun onComplete() {
                     Log.i("TAG", "onComplete")
                 }
 
-                override fun onNext(t: List<com.stefattorusso.domain.RateDomain>?) {
+                override fun onNext(t: List<RateDomain>?) {
                     mRateList.value = t
                 }
 
@@ -106,10 +107,10 @@ class MainViewModel @Inject constructor(
         loadData(mSelectedRate.code)
     }
 
-    private fun calculateRates(base: BigDecimal?, list: List<com.stefattorusso.domain.RateDomain>?): List<com.stefattorusso.domain.RateDomain> {
-        val mutableList = mutableListOf<com.stefattorusso.domain.RateDomain>()
+    private fun calculateRates(base: BigDecimal?, list: List<RateDomain>?): List<RateDomain> {
+        val mutableList = mutableListOf<RateDomain>()
         list?.mapTo(mutableList) { current ->
-            com.stefattorusso.domain.RateDomain(
+            RateDomain(
                 current.code,
                 base?.multiply(current.value) ?: current.value,
                 false

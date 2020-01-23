@@ -10,7 +10,6 @@ import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.mynameismidori.currencypicker.ExtendedCurrency
 import com.stefattorusso.simpleconverter.R
 import com.stefattorusso.simpleconverter.model.RateModel
 import com.stefattorusso.simpleconverter.ui.main.mvvm.MainViewModel
@@ -63,7 +62,7 @@ class MainAdapter(
         fun bindData(data: RateModel) {
             rateCode.text = data.code
             rateName.text = data.name
-            flagImage.loadResource(ExtendedCurrency.getCurrencyByISO(data.code).flag)
+            flagImage.loadResource(data.flag)
             rateEditText.apply {
                 setText(data.value)
                 isEnabled = data.base

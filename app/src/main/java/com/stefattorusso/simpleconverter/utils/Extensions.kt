@@ -9,6 +9,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.mynameismidori.currencypicker.ExtendedCurrency
 import com.stefattorusso.domain.RateDomain
 import com.stefattorusso.simpleconverter.model.RateModel
 import java.io.IOException
@@ -24,7 +25,8 @@ fun RateDomain.toModel(): RateModel {
         this.code,
         Currency.getInstance(this.code).getDisplayName(Locale.US),
         this.value.toStringValue(),
-        this.base
+        this.base,
+        ExtendedCurrency.getCurrencyByISO(this.code).flag
     )
 }
 

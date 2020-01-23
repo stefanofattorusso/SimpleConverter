@@ -19,6 +19,8 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
     protected lateinit var viewModel: VM
 
+    private var mErrorDialog: AlertDialog? = null
+
     override fun onAttach(context: Context) {
         injectMembers()
         super.onAttach(context)
@@ -27,6 +29,11 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory).get(viewModelClass)
+    }
+
+    override fun onDestroyView() {
+        mErrorDialog?.dismiss()
+        super.onDestroyView()
     }
 
     protected open fun injectMembers() {
@@ -39,10 +46,10 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
     protected fun showError(errorMessage: String) {
         val builder = AlertDialog.Builder(context)
-        builder.setTitle(getString(R.string.dialog_error_title))
+        mErrorDialog = builder.setTitle(getString(R.string.dialog_error_title))
             .setMessage(errorMessage)
             .setPositiveButton(getString(R.string.dialog_error_positive), null)
             .create()
-            .show()
+        mErrorDialog?.show()
     }
 }
