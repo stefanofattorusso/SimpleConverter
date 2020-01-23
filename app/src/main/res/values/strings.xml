@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Android Test</string>
+    <string name="api_domain">https://revolut.duckdns.org</string>
+    <string name="dialog_error_title">Error!</string>
+    <string name="generic_error_title">An error occurred!</string>
+    <string name="dialog_error_positive">close</string>
+</resources>
