@@ -1,4 +1,4 @@
-package com.stefattorusso.simpleconverter.domain
+package com.stefattorusso.domain
 
 import java.math.BigDecimal
 

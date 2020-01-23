@@ -9,7 +9,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.stefattorusso.simpleconverter.domain.RateDomain
+import com.stefattorusso.domain.RateDomain
 import com.stefattorusso.simpleconverter.model.RateModel
 import java.io.IOException
 import java.io.InputStream

@@ -6,9 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.stefattorusso.domain.usecase.GetLatestUseCaseContract
 import com.stefattorusso.simpleconverter.base.BaseViewModel
-import com.stefattorusso.simpleconverter.domain.RateDomain
-import com.stefattorusso.simpleconverter.domain.usecase.GetLatestUseCaseContract
 import com.stefattorusso.simpleconverter.model.ErrorModel
 import com.stefattorusso.simpleconverter.model.RateModel
 import com.stefattorusso.simpleconverter.utils.MyOpenClass
@@ -28,13 +27,14 @@ class MainViewModel @Inject constructor(
 
     private var mDisposable: Disposable? = null
 
-    private var mSelectedRate = RateDomain("EUR", BigDecimal.ONE, true)
+    private var mSelectedRate =
+        com.stefattorusso.domain.RateDomain("EUR", BigDecimal.ONE, true)
 
     private val mSelectedValue = MutableLiveData<BigDecimal>()
     val selectedValue: LiveData<BigDecimal> = mSelectedValue
 
-    private val mRateList = MutableLiveData<List<RateDomain>>()
-    private var mUpdatedRateList = MediatorLiveData<List<RateDomain>>().apply {
+    private val mRateList = MutableLiveData<List<com.stefattorusso.domain.RateDomain>>()
+    private var mUpdatedRateList = MediatorLiveData<List<com.stefattorusso.domain.RateDomain>>().apply {
         value = mutableListOf()
 
         addSource(mRateList) {
@@ -63,12 +63,12 @@ class MainViewModel @Inject constructor(
         mDisposable = getLatestUseCase.getLatest(base)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(object : ResourceSubscriber<List<RateDomain>>() {
+            .subscribeWith(object : ResourceSubscriber<List<com.stefattorusso.domain.RateDomain>>() {
                 override fun onComplete() {
                     Log.i("TAG", "onComplete")
                 }
 
-                override fun onNext(t: List<RateDomain>?) {
+                override fun onNext(t: List<com.stefattorusso.domain.RateDomain>?) {
                     mRateList.value = t
                 }
 
@@ -106,10 +106,10 @@ class MainViewModel @Inject constructor(
         loadData(mSelectedRate.code)
     }
 
-    private fun calculateRates(base: BigDecimal?, list: List<RateDomain>?): List<RateDomain> {
-        val mutableList = mutableListOf<RateDomain>()
+    private fun calculateRates(base: BigDecimal?, list: List<com.stefattorusso.domain.RateDomain>?): List<com.stefattorusso.domain.RateDomain> {
+        val mutableList = mutableListOf<com.stefattorusso.domain.RateDomain>()
         list?.mapTo(mutableList) { current ->
-            RateDomain(
+            com.stefattorusso.domain.RateDomain(
                 current.code,
                 base?.multiply(current.value) ?: current.value,
                 false

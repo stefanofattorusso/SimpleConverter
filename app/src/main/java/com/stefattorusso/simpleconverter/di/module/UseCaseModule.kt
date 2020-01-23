@@ -1,7 +1,7 @@
 package com.stefattorusso.simpleconverter.di.module
 
-import com.stefattorusso.simpleconverter.domain.usecase.GetLatestUseCase
-import com.stefattorusso.simpleconverter.domain.usecase.GetLatestUseCaseContract
+import com.stefattorusso.domain.usecase.GetLatestUseCase
+import com.stefattorusso.domain.usecase.GetLatestUseCaseContract
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton

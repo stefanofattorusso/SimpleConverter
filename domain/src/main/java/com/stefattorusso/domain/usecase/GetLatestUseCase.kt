@@ -1,7 +1,6 @@
-package com.stefattorusso.simpleconverter.domain.usecase
+package com.stefattorusso.domain.usecase
 
-import com.stefattorusso.simpleconverter.data.repository.RatesRepositoryContract
-import com.stefattorusso.simpleconverter.domain.RateDomain
+import com.stefattorusso.domain.repository.RatesRepositoryContract
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Observable
@@ -13,7 +12,7 @@ class GetLatestUseCase @Inject constructor(
     private val repository: RatesRepositoryContract
 ): GetLatestUseCaseContract {
 
-    override fun getLatest(base: String): Flowable<List<RateDomain>> {
+    override fun getLatest(base: String): Flowable<List<com.stefattorusso.domain.RateDomain>> {
         return repository.retrieveLatest(base)
             .repeatWhen {
                 Observable.interval(1000, TimeUnit.MILLISECONDS)
