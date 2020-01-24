@@ -6,7 +6,7 @@ import com.stefattorusso.data.local.room.RateDatabase
 
 @Entity(tableName = RateDatabase.DATABASE_NAME)
 data class RateEntity(
-    @PrimaryKey var code: String,
-    var value: String,
-    var base: Boolean
+    @PrimaryKey var base: String,
+    var date: String,
+    var rates: HashMap<String, Double>
 )
