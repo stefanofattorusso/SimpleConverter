@@ -8,5 +8,5 @@ import com.stefattorusso.data.local.room.RateDatabase
 data class RateEntity(
     @PrimaryKey var base: String,
     var date: String,
-    var rates: HashMap<String, Double>
+    var rates: Map<String, Double>
 )

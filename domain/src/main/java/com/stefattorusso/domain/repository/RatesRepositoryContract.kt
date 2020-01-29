@@ -1,8 +1,9 @@
 package com.stefattorusso.domain.repository
 
-import io.reactivex.Single
+import com.stefattorusso.domain.RateDomain
+import io.reactivex.Flowable
 
 interface RatesRepositoryContract {
 
-    fun retrieveLatest(base: String): Single<List<com.stefattorusso.domain.RateDomain>>
+    fun retrieveLatest(base: String): Flowable<List<RateDomain>>
 }

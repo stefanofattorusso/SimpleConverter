@@ -6,6 +6,7 @@ ext {
     glideVersion = '4.9.0'
     okHttpVersion = '4.2.2'
     daggerVersion = '2.24'
+    timberVersion = '4.7.1'
     rxKotlinVersion = '2.4.0'
     androidXVersion = '1.1.0'
     retrofitVersion = '2.6.2'

@@ -13,6 +13,6 @@ interface RateDao {
     @Insert(onConflict = REPLACE)
     fun save(rate: RateEntity)
 
-    @Query("SELECT * FROM rates WHERE code = :code")
-    fun load(code: String): Flowable<RateEntity>
+    @Query("SELECT * FROM rates WHERE base = :base")
+    fun load(base: String): Flowable<RateEntity>
 }
