@@ -7,6 +7,7 @@ import com.stefattorusso.simpleconverter.R
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -68,7 +69,7 @@ object NetworkModule {
             .baseUrl(context.getString(R.string.api_domain))
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
     }
 

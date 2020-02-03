@@ -46,7 +46,7 @@ abstract class NetworkBoundResource<RawResult, ResultType>{
                 .map { Resource.loading(it) }
                 .take(1),
             source
-        ).subscribeOn(Schedulers.io())
+        )
     }
 
     fun asObservable(): Observable<Resource<ResultType>>{

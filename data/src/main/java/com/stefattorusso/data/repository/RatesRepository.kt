@@ -2,8 +2,6 @@ package com.stefattorusso.data.repository
 
 import com.stefattorusso.data.local.entity.RateEntity
 import com.stefattorusso.data.local.room.RateDatabase
-import com.stefattorusso.data.network.ApiResponse
-import com.stefattorusso.data.network.ApiSuccessResponse
 import com.stefattorusso.data.network.NetworkBoundResource
 import com.stefattorusso.data.network.entity.RatesContainerEntity
 import com.stefattorusso.data.network.retrofit.AppRetrofitService
@@ -21,13 +19,13 @@ class RatesRepository @Inject constructor(
 ) : RatesRepositoryContract {
 
     override fun retrieveLatest(base: String): Flowable<List<RateDomain>> {
-        return object : NetworkBoundResource<ApiResponse<RatesContainerEntity>, RateEntity>(){
+        return object : NetworkBoundResource<RatesContainerEntity, RateEntity>(){
 
             override fun shouldFetch(): Boolean {
                 return true
             }
 
-            override fun createCall(): Observable<ApiResponse<RatesContainerEntity>> {
+            override fun createCall(): Observable<RatesContainerEntity> {
                 return service.retrieveLatest(base).toObservable()
             }
 
@@ -35,9 +33,13 @@ class RatesRepository @Inject constructor(
                 return database.rateDao().load(base)
             }
 
-            override fun saveCallResult(resultType: ApiResponse<RatesContainerEntity>) {
-                val result = (resultType as ApiSuccessResponse)
-//                database.rateDao().save(result.body)
+            override fun saveCallResult(resultType: RatesContainerEntity) {
+                val entity = RateEntity(
+                    resultType.base ?: "",
+                    resultType.date ?: "",
+                    resultType.rates ?: emptyMap()
+                )
+                database.rateDao().save(entity)
             }
 
         }.asObservable()

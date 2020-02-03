@@ -17,7 +17,7 @@ class RateConverter {
         val keys = jsonObject.keys()
         while (keys.hasNext()){
             val key = keys.next()
-            map[key] = jsonObject[key] as Double
+            map[key] = jsonObject[key].toString().toDouble()
         }
         return map
     }
