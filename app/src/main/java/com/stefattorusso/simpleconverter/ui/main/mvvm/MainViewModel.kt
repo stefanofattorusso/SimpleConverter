@@ -61,6 +61,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun loadData(base: String) {
+        mDisposable?.dispose()
         mDisposable = getLatestUseCase.getLatest(base)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -83,7 +84,6 @@ class MainViewModel @Inject constructor(
 
     fun onItemSelected(position: Int) {
         if (position > 0) {
-            mDisposable?.dispose()
             mRateList.value?.get(position - 1)?.let {
                 mSelectedRate = it.apply {
                     base = true
@@ -91,6 +91,7 @@ class MainViewModel @Inject constructor(
                 }
                 mRateSelected.value = true
             }
+
             loadData(mSelectedRate.code)
         }
     }

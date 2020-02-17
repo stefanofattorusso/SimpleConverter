@@ -5,5 +5,5 @@ import io.reactivex.Flowable
 
 interface RatesRepositoryContract {
 
-    fun retrieveLatest(base: String): Flowable<List<RateDomain>>
+    fun startRetrievingRates(base: String): Flowable<List<RateDomain>>
 }

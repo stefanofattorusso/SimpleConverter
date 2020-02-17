@@ -81,7 +81,6 @@ fun Context.getStringFromAssets(name: String): String {
     return value
 }
 
-
 // View
 
 fun ImageView.loadUrl(url: String?) {

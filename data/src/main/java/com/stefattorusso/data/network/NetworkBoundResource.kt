@@ -9,14 +9,13 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
 
-abstract class NetworkBoundResource<RawResult, ResultType>{
+abstract class NetworkBoundResource<RawResult, ResultType> {
 
     private var result: Flowable<Resource<ResultType>>
 
     init {
-        val source: Flowable<Resource<ResultType>>
-        if (this.shouldFetch()) {
-            source = this.createCall()
+        result = if (this.shouldFetch()) {
+            this.createCall()
                 .doOnNext {
                     saveCallResult(it)
                 }
@@ -29,28 +28,25 @@ abstract class NetworkBoundResource<RawResult, ResultType>{
                     onFetchFailed(it)
                 }
                 .onErrorResumeNext { t: Throwable ->
-                        loadFromDb()
-                            .toObservable()
-                            .map { Resource.error(t.localizedMessage, it) }
+                    loadFromDb()
+                        .toObservable()
+                        .map { Resource.error(t.localizedMessage, it) }
                 }
                 .toFlowable(BackpressureStrategy.LATEST)
 
         } else {
-            source = this.loadFromDb()
+            this.loadFromDb()
                 .subscribeOn(Schedulers.io())
                 .map { Resource.success(it) }
         }
-
-        result = Flowable.concat(
-            initLoadDb()
-                .map { Resource.loading(it) }
-                .take(1),
-            source
-        )
     }
 
-    fun asObservable(): Observable<Resource<ResultType>>{
+    fun asObservable(): Observable<Resource<ResultType>> {
         return result.toObservable()
+    }
+
+    fun asFlowable(): Flowable<Resource<ResultType>>{
+        return result
     }
 
     protected fun onFetchFailed(t: Throwable) {

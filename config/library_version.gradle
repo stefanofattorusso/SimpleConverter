@@ -4,7 +4,7 @@ ext {
 
     roomVersion = '2.2.3'
     glideVersion = '4.9.0'
-    okHttpVersion = '4.2.2'
+    okHttpVersion = '4.3.1'
     daggerVersion = '2.24'
     timberVersion = '4.7.1'
     rxKotlinVersion = '2.4.0'

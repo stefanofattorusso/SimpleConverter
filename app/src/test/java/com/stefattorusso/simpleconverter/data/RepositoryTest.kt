@@ -60,7 +60,7 @@ class RepositoryTest {
     @Test
     fun should_should_convert_container_to_list_of_rates(){
 
-        mRepository.retrieveLatest("EUR")
+        mRepository.startRetrievingRates("EUR")
             .test()
             .assertValues(mRatesList)
 
